@@ -1,11 +1,24 @@
+/*
+EVENT LISTENER: assets/scripts/app.js
+Listens for event input from index.html (forms, clicks, etc)
+and sends to assets/scripts/<>/events.js
+*/
 'use strict'
 
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
-
-// use require without a reference to ensure a file is bundled
-// require('./example')
+const authEvents = require('./auth/events')
+const petEvents = require('./pets/events')
 
 $(() => {
-  // your JS code goes here
+// authEvents
+  $('.logged-in').hide()
+  $('#sign-up').on('submit', authEvents.onSignUp)
+  $('#sign-in').on('submit', authEvents.onSignIn)
+  $('#sign-out').on('submit', authEvents.onSignOut)
+  $('#change-password').on('submit', authEvents.onChangePassword)
+  // $('#test').on('click', gameEvents.onTestButton)
+  $('#pets-index').on('click', petEvents.onIndexPets)
+  $('#pets-show').on('submit', petEvents.onShowPet)
+  $('#pets-create').on('submit', petEvents.onCreatePet)
+  $('#pets-update').on('submit', petEvents.onUpdatePet)
+  $('#pets-delete').on('submit', petEvents.onDeletePet)
 })
