@@ -1,30 +1,63 @@
+@font-face {
+  font-family: 'dogica';
+  src: url('public/dogicapixel.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'dogicabold';
+  src: url('public/dogicapixelbold.ttf') format('truetype');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'pixelpoiiz';
+  src: url('public/pixelpoiiz.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'bubble';
+  src: url('public/04B.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'fipps';
+  src: url('public/fipps.otf') format('opentype');
+}
+@font-face {
+  font-family: 'silkscreen';
+  src: url('public/slkscr.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'silkscreenbold';
+  src: url('public/slkscrb.ttf') format('truetype');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'picopixel';
+  src: url('public/Picopixel.ttf') format('truetype');
+}
 @import '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&family=VT323&display=swap');
 
-//font-family: 'Press Start 2P', cursive;
-//font-family: 'VT323', monospace;
-//font-family: 'DotGothic16', sans-serif;
+body {
+  font-family: dogica;
+}
+
+h2 {
+  font-family: pixelpoiiz;
+}
 
 section {
   border: 5px solid black;
   padding: 5px;
-  font-family: 'VT323', monospace;
   display: block;
 }
 
 input {
-  display: block;
   border: 1px solid black;
   margin: 5px;
+  padding: 5px;
+  display: block;
 }
+
 form {
   border: 1px solid black;
   margin: 5px;
   padding: 5px;
   display: inline-block;
-}
-
-h2 {
-  font-size: 20px;
-  font-family: 'DotGothic16', sans-serif;
 }

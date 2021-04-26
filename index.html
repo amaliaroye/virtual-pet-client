@@ -13,75 +13,70 @@
 </head>
 <body>
 
-
 <section class="logged-in">
   <!--   SIGN-OUT   -->
   <form id="sign-out">
     <h2>Sign Out</h2>
-    <input type="submit" class="button" value="Sign Out!">
+    <input type="submit" value="Sign Out!">
   </form>
   <!--   FORM - CHANGE-PASSWORD   -->
     <form id="change-password">
       <h2>Change Password</h2>
-      <input name="passwords[old]" class="form-input" type="password" placeholder="Enter old password" required>
-      <input name="passwords[new]" class="form-input" type="password" placeholder="Enter new password" required>
-      <input type="submit" class="button" value="Change Password!">
+      <input name="passwords[old]"  type="password" placeholder="Enter old password" required>
+      <input name="passwords[new]" type="password" placeholder="Enter new password" required>
+      <input type="submit" value="Change Password!">
     </form>
 </section>
+
 <section class="logged-out">
   <!--   FORM - SIGN-UP   -->
     <form id="sign-up">
       <h2>Sign-Up</h2>
-      <input name="credentials[email]" class="form-input" type="email" placeholder="Email address" required>
-      <input name="credentials[password]" class="form-input" type="password" placeholder="Enter password" required>
-      <input name="credentials[password_confirmation]" class="form-input" type="password" placeholder="Confirm password" required>
-      <input type="submit" class="button" value="Sign Up!">
+      <input name="credentials[email]" type="email" placeholder="Email address" required>
+      <input name="credentials[password]" type="password" placeholder="Enter password" required>
+      <input name="credentials[password_confirmation]" type="password" placeholder="Confirm password" required>
+      <input type="submit" value="Sign Up!">
     </form>
 
   <!--   FORM - SIGN-IN   -->
     <form id="sign-in">
       <h2>Sign-In</h2>
-      <input name="credentials[email]" class="form-input" type="email" placeholder="Enter email" required>
-      <input name="credentials[password]" class="form-input" type="password" placeholder="Enter password" required>
-      <input type="submit" class="button" value="Sign In!">
+      <input name="credentials[email]" type="email" placeholder="Enter email" required>
+      <input name="credentials[password]" type="password" placeholder="Enter password" required>
+      <input type="submit" value="Sign In!">
   </form>
 </section>
 
 <!--   MAIN    -->
 <main>
-<section id="petbox">
+  <section>
+    <!-- INDEX -->
+    <form id="pets-index">
+      <input value="See all of my pets!" type=submit>
+    </form>
 
-  <!-- INDEX -->
-  <form id="pets-index">
-    <input value="See all of my pets!" type=submit class="button">
-  </form>
-  <!-- SHOW -->
-  <form id="pets-show">
-    <input name="pet.id" type="text" placeholder="Enter id" required>
-    <input value="Search for a pet by id!" type=submit class="button">
-  </form>
+    <!-- SHOW -->
+    <form id="pets-show">
+      <input name="pet[id]" type="text" placeholder="Enter id" required>
+      <input value="Search for a pet by id!" type=submit>
+    </form>
 
-  <!-- CREATE -->
-  <form id="pets-create">
-    <input name="pet.name" type="text" placeholder="Enter name" required>
-    <input name="pet.type" type="text" placeholder="Enter type"required>
-    <input value="Adopt a new pet!" type=submit class="button">
-  </form>
-</section>
+    <!-- CREATE -->
+    <form id="pets-create">
+      <input name="pet[name]" type="text" placeholder="Enter name" required>
+      <input name="pet[type]" type="text" placeholder="Enter type"required>
+      <input value="Adopt a new pet!" type=submit>
+    </form>
+  </section>
 
-
-
-
-
-
-<section>
-  <!-- We will show any error messages in this div -->
-  <div id="error-message"></div>
-  <!-- We will list our pets in pets-display after loading the books -->
-  <div id="pets-display"></div>
-</section>
+  <section id="messages">
+    <!-- MESSAGES TO USER -->
+    <div id="error-message"></div>
+    <div id="info-message"></div>
+    <!-- LIST O PETS -->
+    <div id="pets-display"></div>
+  </section>
 </main>
-
 
 </body>
 </html>

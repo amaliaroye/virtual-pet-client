@@ -4,10 +4,15 @@ Contains functions that use $.ajax to make an API call
 Invoked by event handler callback assets/scripts/pets/events.js
 */
 // import our apiUrl from the config file
-const config = require('../config')
+const config = require('./../config')
 const store = require('./../store')
 
-// make a request to get all pets (index)
+/*      ___   _  _   ___    ___  __  __
+ *     |_ _| | \| | |   \  | __| \ \/ /
+ *      | |  | .` | | |) | | _|   >  <
+ *     |___| |_|\_| |___/  |___| /_/\_\
+ */
+// GET: /pets (owned by current user)
 const index = function () {
   return $.ajax({
     method: 'GET',
@@ -18,7 +23,12 @@ const index = function () {
   })
 }
 
-// make a request to get a single pet
+/*      ___   _  _    ___   __      __
+ *     / __| | || |  / _ \  \ \    / /
+ *     \__ \ | __ | | (_) |  \ \/\/ /
+ *     |___/ |_||_|  \___/    \_/\_/
+ */
+// GET: /pets/:id (search for a pet by id)
 const show = function (id) {
   return $.ajax({
     method: 'GET',
@@ -29,7 +39,12 @@ const show = function (id) {
   })
 }
 
-// make a request to create a new pet
+/*       ___   ___   ___     _     _____   ___
+ *      / __| | _ \ | __|   /_\   |_   _| | __|
+ *     | (__  |   / | _|   / _ \    | |   | _|
+ *      \___| |_|_\ |___| /_/ \_\   |_|   |___|
+ */
+// POST: /pets
 const create = function (formData) {
   return $.ajax({
     method: 'POST',
@@ -40,19 +55,12 @@ const create = function (formData) {
     }
   })
 }
-
-// make a request to destroy a single pet
-const destroy = function (id) {
-  return $.ajax({
-    method: 'DELETE',
-    url: config.apiUrl + '/pets/' + id,
-    headers: {
-      Authorization: 'Bearer ' + store.user.token
-    }
-  })
-}
-
-// make a request to update a single pet
+/*      _   _   ___   ___      _     _____   ___
+*     | | | | | _ \ |   \    /_\   |_   _| | __|
+*     | |_| | |  _/ | |) |  / _ \    | |   | _|
+*      \___/  |_|   |___/  /_/ \_\   |_|   |___|
+*/
+// PATCH: /pets/:id
 const update = function (id, formData) {
   return $.ajax({
     method: 'PATCH',
@@ -64,10 +72,26 @@ const update = function (id, formData) {
   })
 }
 
+/*      ___    ___   _      ___   _____   ___
+ *     |   \  | __| | |    | __| |_   _| | __|
+ *     | |) | | _|  | |__  | _|    | |   | _|
+ *     |___/  |___| |____| |___|   |_|   |___|
+ */
+// DELETE: /pets/:id
+const release = function (id) {
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + '/pets/' + id,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   index,
   show,
-  destroy,
+  release,
   update,
   create
 }

@@ -28,13 +28,35 @@ const onCreatePet = function (event) {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
+  console.log(formData)
   api.create(formData)
     .then(ui.onCreateSuccess)
+    .catch(ui.onError)
+}
+
+const onUpdatePet = function (event) {
+  event.preventDefault()
+  const id = $(event.target).data('id')
+  const form = event.target
+  const formData = getFormFields(form)
+  api.update(id, formData)
+    .then(ui.onUpdateSuccess)
+    .catch(ui.onError)
+}
+
+const onReleasePet = function (event) {
+  event.preventDefault()
+  const id = $(event.target).data('id')
+  $(`#${id}`).remove()
+  api.release(id)
+    .then(ui.onReleaseSuccess)
     .catch(ui.onError)
 }
 
 module.exports = {
   onIndexPets,
   onShowPet,
-  onCreatePet
+  onCreatePet,
+  onUpdatePet,
+  onReleasePet
 }
