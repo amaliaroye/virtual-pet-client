@@ -61,11 +61,11 @@ const create = function (formData) {
 *      \___/  |_|   |___/  /_/ \_\   |_|   |___|
 */
 // PATCH: /pets/:id
-const update = function (id, formData) {
+const update = function (id, petData) {
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/pets/' + id,
-    data: formData,
+    data: petData,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }

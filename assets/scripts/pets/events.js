@@ -15,6 +15,7 @@ const onIndexPets = function () {
     .then(ui.onIndexSuccess)
     .catch(ui.onError)
 }
+
 const onShowPet = function (event) {
   event.preventDefault()
   const form = event.target
@@ -28,7 +29,6 @@ const onCreatePet = function (event) {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
-  console.log(formData)
   api.create(formData)
     .then(ui.onCreateSuccess)
     .catch(ui.onError)
@@ -46,17 +46,33 @@ const onUpdatePet = function (event) {
 
 const onReleasePet = function (event) {
   event.preventDefault()
+  // get the value of the button's data-id attribute
   const id = $(event.target).data('id')
+  // remove the <div> with the same id of pet._id
   $(`#${id}`).remove()
   api.release(id)
     .then(ui.onReleaseSuccess)
     .catch(ui.onError)
 }
 
+const onPlay = function (event) {
+  event.preventDefault()
+  const id = $(event.target).data('id')
+  const petData = {}
+  api.update(id, petData)
+    .then(ui.onUpdateSuccess)
+    .catch(ui.onError)
+}
+
+// const randomNumber = function () {
+//   return Math.floor((Math.random() * 5) + 1)
+// }
+
 module.exports = {
   onIndexPets,
   onShowPet,
   onCreatePet,
   onUpdatePet,
-  onReleasePet
+  onReleasePet,
+  onPlay
 }
