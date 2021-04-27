@@ -6,13 +6,24 @@ Modifies index.html
 'use strict'
 
 const petInfoHtml = function (pet) {
-  return `<div id=${pet._id} class="pet-info">
-    <h3>${pet.name} the ${pet.type}</h3>
+  return `<div id="${pet._id}">
+    <h3>${pet.name}</h3> <h4>the ${pet.type}</h4>
+
     <h4>Happiness: ${pet.happiness}/100</h4>
-    <input value="Release ${pet.name}" type=submit class="pets-release" data-id=${pet._id}>
-    <input value="Play With ${pet.name}" type=submit class="pets-play" data-id=${pet._id}>
+    <div class="statbar">
+      <div class="stat" style="width:${pet.happiness}%">${pet.happiness}</div>
+    </div>
+
+    <input value="Release ${pet.name}" type="button" class="pets-release pet-options" data-id=${pet._id}>
+    <input value="Play With ${pet.name}" type="button" class="pets-play pet-options" data-id=${pet._id}>
+
   </div>`
 }
+// <form class="pets-update">
+//   <input name="pet[key]" type="text" placeholder="Property to change" required>
+//   <input name="pet[value]" type="text" placeholder="New value" required>
+//   <input value="Update Pet!" type=submit>
+// </form>
 
 const onIndexSuccess = function (res) {
   const pets = res.pets
@@ -31,22 +42,21 @@ const onShowSuccess = function (res) {
 
 const onCreateSuccess = function (res) {
   const pet = res.pet
-  $('#pets-display').prepend(petInfoHtml(pet)) // add to #pets-display
+  $('#pets-display').slideDown(1000).prepend(petInfoHtml(pet)) // add to #pets-display
   $('form').trigger('reset') // clear form
 }
 
 const onReleaseSuccess = function () {
-  $('#info-message').text('Released!')
+  $('#message').text('Released!').toggle(1000)
 }
 
 const onUpdateSuccess = function () {
-  $('#info-message').text('Updated!')
+  $('#message').text('Updated!').toggle(1000)
   $('form').trigger('reset')
 }
 
-const onError = function (error) {
-  console.error(error)
-  $('#error-message').text('Something went wrong, please try again.')
+const onError = function () {
+  $('#error-message').text('Something went wrong, please try again.').toggle(1000)
   $('form').trigger('reset')
 }
 

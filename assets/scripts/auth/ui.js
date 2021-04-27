@@ -6,42 +6,42 @@ Modifies index.html
 const store = require('./../store')
 
 const onSignUpSuccess = function () {
-  $('#message').text('Created new account successfully! Please sign-in!')
+  $('#message').text('Created new account successfully! Please sign-in!').toggle(1000)
   $('form').trigger('reset')
 }
 
 const onSignUpError = function () {
-  $('#message').text('Whoops! Something went wrong. Please try again.')
+  $('#error-message').text('Whoops! Something went wrong. Please try again.').toggle(1000)
 }
 
 const onSignInSuccess = function (response) {
   store.user = response.user
-  $('#message').text('Signed in successfully. Welcome!')
+  $('#message').text('Signed in successfully. Welcome!').toggle(1000)
   $('form').trigger('reset')
   $('.logged-in').show()
   $('.logged-out').hide()
 }
 const onSignInError = function () {
-  $('#message').text('Whoops! Something went wrong. Sign in failed. Please try again.')
+  $('#error-message').text('Whoops! Something went wrong. Sign in failed. Please try again.').toggle(1000)
 }
 
-const onChangePasswordSuccess = function (response) {
+const onChangePasswordSuccess = function () {
   $('#message').text('Changed password successfully!')
   $('form').trigger('reset')
 }
 const onChangePasswordError = function () {
-  $('#message').text('Whoops! Something went wrong. Your password was not changed.')
+  $('#error-message').text('Whoops! Something went wrong. Your password was not changed.').toggle(1000)
   $('form').trigger('reset')
 }
 
 const onSignOutSuccess = function () {
-  $('#message').text('Signed out!')
-  $('.logged-out').hide()
-  $('.logged-in').show()
+  $('#message').text('Signed out!').toggle(1000)
+  $('.logged-out').show()
+  $('.logged-in').hide()
 }
 
 const onSignOutError = function () {
-  $('#message').text('Sign out failed. Please try again.')
+  $('#error-message').text('Sign out failed. Please try again.').toggle(1000)
 }
 
 module.exports = {

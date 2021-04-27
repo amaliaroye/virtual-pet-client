@@ -12,19 +12,6 @@
   src: url('public/pixelpoiiz.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'bubble';
-  src: url('public/04B.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'silkscreen';
-  src: url('public/slkscr.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'silkscreenbold';
-  src: url('public/slkscrb.ttf') format('truetype');
-  font-weight: bold;
-}
-@font-face {
   font-family: 'picopixel';
   src: url('public/Picopixel.ttf') format('truetype');
 }
@@ -32,15 +19,24 @@
 
 body {
   font-family: dogica;
+  margin: 10px;
+  border: 10px solid black;
 }
 
-h2 {
+h1, h2 {
   font-family: pixelpoiiz;
+  border: 5px solid black;
+  padding: 5px;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 section {
   border: 5px solid black;
   padding: 5px;
+  margin: 0 auto;
   display: block;
 }
 
@@ -52,8 +48,29 @@ input {
 }
 
 form {
-  border: 1px solid black;
+  border: 5px solid black;
   margin: 5px;
-  padding: 5px;
+  padding: 10px;
   display: inline-block;
+}
+
+.pet-options {
+  display: inline;
+}
+.collapsible {
+
+}
+
+.statbar {
+  width: 100%;
+  background-color: blue;
+  border: 1px solid black;
+}
+
+.stat {
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: gray;
+  color: white;
 }

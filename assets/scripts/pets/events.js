@@ -49,7 +49,7 @@ const onReleasePet = function (event) {
   // get the value of the button's data-id attribute
   const id = $(event.target).data('id')
   // remove the <div> with the same id of pet._id
-  $(`#${id}`).remove()
+  $(this).parent().remove()
   api.release(id)
     .then(ui.onReleaseSuccess)
     .catch(ui.onError)
@@ -58,15 +58,20 @@ const onReleasePet = function (event) {
 const onPlay = function (event) {
   event.preventDefault()
   const id = $(event.target).data('id')
-  const petData = {}
+  const petData = {
+    pet: {
+      happiness: (this.happiness + randomNumber)
+    }
+  }
+  // patch pet.happiness with +randomNumber
   api.update(id, petData)
     .then(ui.onUpdateSuccess)
     .catch(ui.onError)
 }
 
-// const randomNumber = function () {
-//   return Math.floor((Math.random() * 5) + 1)
-// }
+const randomNumber = function () {
+  return Math.floor((Math.random() * 5) + 1)
+}
 
 module.exports = {
   onIndexPets,
