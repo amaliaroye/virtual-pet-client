@@ -7,12 +7,10 @@ Invoked by event handler callback assets/scripts/pets/events.js
 const config = require('./../config')
 const store = require('./../store')
 
-/*      ___   _  _   ___    ___  __  __
- *     |_ _| | \| | |   \  | __| \ \/ /
- *      | |  | .` | | |) | | _|   >  <
- *     |___| |_|\_| |___/  |___| /_/\_\
+/*
+ * ------------------------------------------------------ [ I N D E X ] --------
+ * GET : /pets
  */
-// GET: /pets (owned by current user)
 const index = function () {
   return $.ajax({
     method: 'GET',
@@ -23,12 +21,10 @@ const index = function () {
   })
 }
 
-/*      ___   _  _    ___   __      __
- *     / __| | || |  / _ \  \ \    / /
- *     \__ \ | __ | | (_) |  \ \/\/ /
- *     |___/ |_||_|  \___/    \_/\_/
+/*
+ * -------------------------------------------------------- [ S H O W ] --------
+ * GET : /pets/:id
  */
-// GET: /pets/:id (search for a pet by id)
 const show = function (id) {
   return $.ajax({
     method: 'GET',
@@ -39,12 +35,10 @@ const show = function (id) {
   })
 }
 
-/*       ___   ___   ___     _     _____   ___
- *      / __| | _ \ | __|   /_\   |_   _| | __|
- *     | (__  |   / | _|   / _ \    | |   | _|
- *      \___| |_|_\ |___| /_/ \_\   |_|   |___|
+/*
+ * ---------------------------------------------------- [ C R E A T E ] --------
+ * POST : /pets
  */
-// POST: /pets
 const create = function (formData) {
   return $.ajax({
     method: 'POST',
@@ -55,12 +49,11 @@ const create = function (formData) {
     }
   })
 }
-/*      _   _   ___   ___      _     _____   ___
-*     | | | | | _ \ |   \    /_\   |_   _| | __|
-*     | |_| | |  _/ | |) |  / _ \    | |   | _|
-*      \___/  |_|   |___/  /_/ \_\   |_|   |___|
-*/
-// PATCH: /pets/:id
+
+/*
+ * ---------------------------------------------------- [ U P D A T E ] --------
+ * PATCH : /pets/:id
+ */
 const update = function (id, petData) {
   return $.ajax({
     method: 'PATCH',
@@ -72,12 +65,10 @@ const update = function (id, petData) {
   })
 }
 
-/*      ___    ___   _      ___   _____   ___
- *     |   \  | __| | |    | __| |_   _| | __|
- *     | |) | | _|  | |__  | _|    | |   | _|
- *     |___/  |___| |____| |___|   |_|   |___|
+/*
+ * ---------------------------------------------------- [ D E L E T E ] --------
+ * DELETE : /pets/:id
  */
-// DELETE: /pets/:id
 const release = function (id) {
   return $.ajax({
     method: 'DELETE',
