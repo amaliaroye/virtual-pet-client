@@ -58,19 +58,15 @@ const onReleasePet = function (event) {
 const onPlay = function (event) {
   event.preventDefault()
   const id = $(event.target).data('id')
+  const happiness = $(event.target).data('happiness')
   const petData = {
     pet: {
-      happiness: (this.happiness + randomNumber)
+      happiness: happiness
     }
   }
-  // patch pet.happiness with +randomNumber
   api.update(id, petData)
     .then(ui.onUpdateSuccess)
     .catch(ui.onError)
-}
-
-const randomNumber = function () {
-  return Math.floor((Math.random() * 5) + 1)
 }
 
 module.exports = {

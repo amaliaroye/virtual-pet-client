@@ -57,20 +57,21 @@ form {
 .pet-options {
   display: inline;
 }
+
 .collapsible {
 
 }
 
 .statbar {
   width: 100%;
-  background-color: blue;
+  background-color: gray;
   border: 1px solid black;
 }
 
-.stat {
+.statbar-fill {
   text-align: left;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: gray;
+  background-color: red;
   color: white;
 }
