@@ -13,6 +13,9 @@
 </head>
 <body>
   <section class="logged-out">
+    <div class="animal pixelart">
+      <img class="spritesheet idle-neutral" src="./public/images/cat-idle.png" alt="sprite">
+    </div>
   <h1>My Virtual Pet</h1>
   <!--   FORM - SIGN-UP   -->
     <form id="sign-up">
@@ -30,15 +33,11 @@
       <input name="credentials[password]" type="password" placeholder="Enter password" required>
       <input type="submit" value="Sign In!">
   </form>
-</section>
-
-<!--   SIDEBAR    -->
-<section class="sidebar logged-in">
-
-</section>
+  </section>
 
 <!--   MAIN    -->
 <main>
+  <!--   SIDEBAR    -->
   <section class="sidebar logged-in">
     <section class="account-options">
     <!--   SIGN-OUT   -->
@@ -79,9 +78,9 @@
     <!-- MESSAGES TO USER -->
     <div id="error-message"></div>
     <div id="message"></div>
-    <!-- LIST O PETS -->
-    <div id="pets-display" class="logged-in"></div>
   </section>
+  <!-- LIST O PETS -->
+  <div id="pets-display" class="logged-in"></div>
 </main>
 
 </body>

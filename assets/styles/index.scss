@@ -1,3 +1,4 @@
+// @import '~bootstrap/scss/bootstrap';
 @font-face {
   font-family: 'dogica';
   src: url('public/dogicapixel.ttf') format('truetype');
@@ -11,11 +12,11 @@
   font-family: 'pixelpoiiz';
   src: url('public/pixelpoiiz.ttf') format('truetype');
 }
-@font-face {
-  font-family: 'picopixel';
-  src: url('public/Picopixel.ttf') format('truetype');
+
+:root {
+  --pixel-size: 6;
+  box-sizing: border-box;
 }
-@import '~bootstrap/scss/bootstrap';
 
 body {
   font-family: dogica;
@@ -45,6 +46,13 @@ input {
   margin: 5px;
   padding: 5px;
   display: block;
+  
+  &:focus {
+    background-color: lightgray;
+  }
+  &:hover {
+    background-color: lightpink;
+  }
 }
 
 form {
@@ -56,10 +64,6 @@ form {
 
 .pet-options {
   display: inline;
-}
-
-.collapsible {
-
 }
 
 .statbar {
@@ -74,4 +78,49 @@ form {
   padding-bottom: 10px;
   background-color: red;
   color: white;
+}
+
+.pixelart {
+   image-rendering: pixelated;
+   image-rendering: crisp-edges;
+}
+
+.animal {
+  width: calc(32px * var(--pixel-size));
+  height: calc(32px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+.spritesheet {
+   animation-name: moveSpritesheet;
+   animation-duration: 1s;
+   animation-iteration-count: infinite;
+   animation-timing-function: steps(2);
+   width: calc(64px * var(--pixel-size));
+   position: absolute;
+}
+
+.idle-neutral {
+   top: calc(0px * var(--pixel-size));
+}
+.idle-happy {
+   top: calc(-32px * var(--pixel-size));
+}
+.idle-unhappy {
+   top: calc(-64px * var(--pixel-size));
+}
+.idle-sad {
+   top: calc(-96px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheet {
+  // moves spritesheet relative to itself
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
 }
