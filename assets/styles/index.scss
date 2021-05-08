@@ -1,76 +1,93 @@
-// @import '~bootstrap/scss/bootstrap';
+/*  🌎  ∘ ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯ ∘  utilities  ∘  ⋯⋯⋯⋯⋯⋯⋯ ∘  🌎  ∘
+*/
 @font-face {
   font-family: 'dogica';
   src: url('public/dogicapixel.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'dogicabold';
-  src: url('public/dogicapixelbold.ttf') format('truetype');
-  font-weight: bold;
 }
 @font-face {
   font-family: 'pixelpoiiz';
   src: url('public/pixelpoiiz.ttf') format('truetype');
 }
 
-:root {
-  --pixel-size: 4;
-  box-sizing: border-box;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-}
 
+/*  🎨  ∘ ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯ ∘  general styles  ∘  ⋯⋯⋯⋯⋯⋯⋯ ∘  🎨  ∘
+*/
 * {
-  font-family: dogica;
+  // Includes padding and border in an element's width and height (not margin)
+  box-sizing: border-box;
+  // CSS variable representing pixel art multiplier
+  --pixel-size: 4;
+  image-rendering: pixelated;
+  font-family: dogica, sans-serif;
 }
+
 body {
-  margin: 10px;
-  border: 10px solid black;
+  font-size: 1em;
 }
-
-h1, h2 {
+h1 {
   font-family: pixelpoiiz;
-  background-color: lightgray;
-  padding: 5px;
+  font-size: 10vw;
   text-align: center;
-  // margin-left: auto;
-  // margin-right: auto;
-  font-size: 30px;
-  &h2 {
-    font-size: 20px;
-  }
+  margin: 5vw;
+}
+h2 {
+  font-family: pixelpoiiz;
+  font-size: 2.5em;
+  margin: 4vw;
 }
 
-section {
-  padding: 5px;
-  margin: 0 auto;
-  display: block;
+.welcome { // wrapper for welcome page contents (h1 + form-container)
+  display: flex;
+  flex-direction: column; // vertical main-axis
+  align-items: center; // centers on the horizontal cross-axis
 }
 
-input {
-  border: calc(16px * var(--pixel-size)) solid transparent;
-  border-image: url('public/images/border4.png') 16 repeat;
-  margin: 4px;
-  padding: 4px;
-  display: block;
-  // &:hover {
-  //   background-color: lightpink;
-  // }
-  // &:focus {
-  //   background-color: lightgray;
-  // }
-  &[type="submit"] {
-    float: right;
+/*  📝  ∘ ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯ ∘  forms  ∘  ⋯⋯⋯⋯⋯⋯⋯ ∘  📝  ∘
+*/
+.form-container { // wrapper for grouping forms (sign-up + sign-in)
+  display: flex;
+  flex-direction: row; // horizontal main-axis
+}
+@media (max-width: 725px) {
+  .form-container,.welcome {
+    flex-flow: column wrap; // vertical main-axis
+    align-items: stretch; // stretches width to 100% on horizontal cross-axis
   }
 }
 
 form {
-  border: 5px solid black;
-  // margin: 5px;
-  // padding: 10px;
-  display: inline-block;
+  border: 5px dotted lightgray;
+  padding: 1vw;
+  margin: 1vw;
+  display: flex;
+  flex-direction: column; // vertical main-axis
+  align-items: center; // centers items on horizontal cross-axis
 }
 
+input {
+  border-width: calc(4px * var(--pixel-size));
+  border-style: solid;
+  border-image-source: url('public/images/border4.png');
+  border-image-repeat: repeat;
+  // width of border offset from source image in pixels (or %)
+  border-image-slice: 4 fill;
+  display: block;
+  background-color: transparent;
+  margin: 1vw;
+  font-size: 1em;
+  &:hover {
+    color: lightpink;
+  }
+  &:focus {
+    color: deeppink;
+  }
+  &[type="submit"] {
+    align-self: flex-end;
+  }
+}
+
+/*  🐾  ∘ ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯ ∘  pet info  ∘  ⋯⋯⋯⋯⋯⋯⋯ ∘  🐾  ∘
+*/
 .pet-options {
   display: inline;
 }
@@ -89,11 +106,13 @@ form {
   color: white;
 }
 
-.pet-sprite {
+/*  🙂  ∘ ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯ ∘  sprites  ∘  ⋯⋯⋯⋯⋯⋯⋯ ∘  🙂  ∘
+*/
+.pet-sprite { // wrapper container for sprite
   width: calc(32px * var(--pixel-size));
   height: calc(32px * var(--pixel-size));
   overflow: hidden;
-  position: relative;
+  position: relative; // shadows should be absolute
   margin: auto;
 }
 
@@ -101,7 +120,7 @@ form {
   animation-name: moveSpritesheet;
   animation-duration: 1s;
   animation-iteration-count: infinite;
-  animation-timing-function: steps(2);
+  animation-timing-function: steps(2); // frames per loop
   animation-play-state: paused;
   width: calc(64px * var(--pixel-size));
   position: absolute;
@@ -132,3 +151,6 @@ form {
     transform: translate3d(-100%, 0, 0);
   }
 }
+
+/*  🙂  ∘ ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯ ∘  media  ∘  ⋯⋯⋯⋯⋯⋯⋯ ∘  🙂  ∘
+*/
