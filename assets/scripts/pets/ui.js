@@ -9,9 +9,12 @@ Modifies index.html
  */
 const petInfoHtml = function (pet) {
   return `<div class="pet-info" id=${pet._id} data-id="${pet._id}">
+  <div class="pet-sprite">
+    <img class="spritesheet idle-happy" src="./public/images/${pet.type}-idle.png" alt="sprite">
+  </div>
     <h3>${pet.name}</h3> <h4>the ${pet.type}</h4>
     <div class="statbar happiness">
-      <div class="statbar-fill happiness" style="width:${pet.happiness}%"> Happiness: ${pet.happiness}/100
+      <div class="statbar-fill happiness" style="width:${pet.happiness}%"> Happiness: ${pet.happiness}%
       </div>
     </div>
 
@@ -81,6 +84,9 @@ const onUpdateSuccess = function (res) {
   $(`#${pet._id}`).html(petInfoHtml(pet))
 }
 
+/*
+ * ------------------------------------------------------ [ E R R O R ] --------
+ */
 const onError = function () {
   $('#error-message').text('Something went wrong, please try again.').toggle(1000)
   $('form').trigger('reset')

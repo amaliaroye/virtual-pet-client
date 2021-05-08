@@ -14,51 +14,60 @@
 }
 
 :root {
-  --pixel-size: 6;
+  --pixel-size: 4;
   box-sizing: border-box;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
-body {
+* {
   font-family: dogica;
+}
+body {
   margin: 10px;
   border: 10px solid black;
 }
 
 h1, h2 {
   font-family: pixelpoiiz;
-  border: 5px solid black;
+  background-color: lightgray;
   padding: 5px;
   text-align: center;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  // margin-left: auto;
+  // margin-right: auto;
+  font-size: 30px;
+  &h2 {
+    font-size: 20px;
+  }
 }
 
 section {
-  border: 5px solid black;
   padding: 5px;
   margin: 0 auto;
   display: block;
 }
 
 input {
-  border: 1px solid black;
-  margin: 5px;
-  padding: 5px;
+  border: calc(16px * var(--pixel-size)) solid transparent;
+  border-image: url('public/images/border4.png') 16 repeat;
+  margin: 4px;
+  padding: 4px;
   display: block;
-  
-  &:focus {
-    background-color: lightgray;
-  }
-  &:hover {
-    background-color: lightpink;
+  // &:hover {
+  //   background-color: lightpink;
+  // }
+  // &:focus {
+  //   background-color: lightgray;
+  // }
+  &[type="submit"] {
+    float: right;
   }
 }
 
 form {
   border: 5px solid black;
-  margin: 5px;
-  padding: 10px;
+  // margin: 5px;
+  // padding: 10px;
   display: inline-block;
 }
 
@@ -69,7 +78,7 @@ form {
 .statbar {
   width: 100%;
   background-color: gray;
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 .statbar-fill {
@@ -80,12 +89,7 @@ form {
   color: white;
 }
 
-.pixelart {
-   image-rendering: pixelated;
-   image-rendering: crisp-edges;
-}
-
-.animal {
+.pet-sprite {
   width: calc(32px * var(--pixel-size));
   height: calc(32px * var(--pixel-size));
   overflow: hidden;
@@ -94,25 +98,29 @@ form {
 }
 
 .spritesheet {
-   animation-name: moveSpritesheet;
-   animation-duration: 1s;
-   animation-iteration-count: infinite;
-   animation-timing-function: steps(2);
-   width: calc(64px * var(--pixel-size));
-   position: absolute;
+  animation-name: moveSpritesheet;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(2);
+  animation-play-state: paused;
+  width: calc(64px * var(--pixel-size));
+  position: absolute;
+  &:hover {
+    animation-play-state: running;
+  }
 }
 
 .idle-neutral {
-   top: calc(0px * var(--pixel-size));
+  top: calc(0px * var(--pixel-size));
 }
 .idle-happy {
-   top: calc(-32px * var(--pixel-size));
+  top: calc(-32px * var(--pixel-size));
 }
 .idle-unhappy {
-   top: calc(-64px * var(--pixel-size));
+  top: calc(-64px * var(--pixel-size));
 }
 .idle-sad {
-   top: calc(-96px * var(--pixel-size));
+  top: calc(-96px * var(--pixel-size));
 }
 
 @keyframes moveSpritesheet {
