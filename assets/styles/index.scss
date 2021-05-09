@@ -8,12 +8,16 @@
   font-family: 'pixelpoiiz';
   src: url('public/pixelpoiiz.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'code128';
+  src: url('public/code128.ttf') format('truetype');
+}
 
 
 /*  🎨  ∘ ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯ ∘  general styles  ∘  ⋯⋯⋯⋯⋯⋯⋯ ∘  🎨  ∘
 */
 * {
-  // Includes padding and border in an element's width and height (not margin)
+  // Includes padding + border in an element's width and height (not margin)
   box-sizing: border-box;
   // CSS variable representing pixel art multiplier
   --pixel-size: 4;
@@ -26,9 +30,9 @@ body {
 }
 h1 {
   font-family: pixelpoiiz;
-  font-size: 10vw;
+  font-size: 8vw;
   text-align: center;
-  margin: 5vw;
+  margin: 4vw;
 }
 h2 {
   font-family: pixelpoiiz;
@@ -62,7 +66,7 @@ form {
   display: flex;
   flex-direction: column; // vertical main-axis
   align-items: center; // centers items on horizontal cross-axis
-}
+  }
 
 input {
   border-width: calc(4px * var(--pixel-size));
@@ -71,7 +75,7 @@ input {
   border-image-repeat: repeat;
   // width of border offset from source image in pixels (or %)
   border-image-slice: 4 fill;
-  display: block;
+  display: inline-block;
   background-color: transparent;
   margin: 1vw;
   font-size: 1em;
@@ -82,14 +86,28 @@ input {
     color: deeppink;
   }
   &[type="submit"] {
-    align-self: flex-end;
+    align-self: flex-end; // aligns buttons to right
   }
 }
+
+.fieldset-container {
+  flex-flow: row wrap;
+}
+.input_hidden {
+  position: absolute;
+  left: -9999px;
+}
+.selected {}
+
 
 /*  🐾  ∘ ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯ ∘  pet info  ∘  ⋯⋯⋯⋯⋯⋯⋯ ∘  🐾  ∘
 */
 .pet-options {
   display: inline;
+}
+
+.barcode {
+  font-family: code128;
 }
 
 .statbar {
@@ -109,6 +127,14 @@ input {
 /*  🙂  ∘ ⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯ ∘  sprites  ∘  ⋯⋯⋯⋯⋯⋯⋯ ∘  🙂  ∘
 */
 .pet-sprite { // wrapper container for sprite
+  width: calc(32px * var(--pixel-size));
+  height: calc(32px * var(--pixel-size));
+  overflow: hidden;
+  position: relative; // shadows should be absolute
+  margin: auto;
+}
+
+.head-sprite { // wrapper container for sprite heads
   width: calc(32px * var(--pixel-size));
   height: calc(32px * var(--pixel-size));
   overflow: hidden;

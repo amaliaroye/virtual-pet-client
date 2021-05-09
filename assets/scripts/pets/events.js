@@ -9,6 +9,7 @@ const api = require('./api')
 const ui = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
 
+// view all owned pets
 const onIndexPets = function () {
   event.preventDefault()
   api.index()
@@ -16,6 +17,7 @@ const onIndexPets = function () {
     .catch(ui.onError)
 }
 
+// Search for pet by id
 const onShowPet = function (event) {
   event.preventDefault()
   const form = event.target
@@ -34,6 +36,17 @@ const onCreatePet = function (event) {
     .catch(ui.onError)
 }
 
+const onPlay = function (event) {
+  event.preventDefault()
+  const id = $(event.target).data('id')
+  const happiness = $(event.target).data('happiness')
+  const petData = { pet: { happiness: happiness } }
+  // sends current happiness data to api
+  api.update(id, petData)
+    .then(ui.onUpdateSuccess)
+    .catch(ui.onError)
+}
+
 const onUpdatePet = function (event) {
   event.preventDefault()
   const id = $(event.target).data('id')
@@ -46,26 +59,12 @@ const onUpdatePet = function (event) {
 
 const onReleasePet = function (event) {
   event.preventDefault()
-  // get the value of the button's data-id attribute
   const id = $(event.target).data('id')
+  const name = $(event.target).data('name')
   // remove the <div> with the same id of pet._id
-  $(this).parent().remove()
+  $(`#${id}`).remove()
   api.release(id)
-    .then(ui.onReleaseSuccess)
-    .catch(ui.onError)
-}
-
-const onPlay = function (event) {
-  event.preventDefault()
-  const id = $(event.target).data('id')
-  const happiness = $(event.target).data('happiness')
-  const petData = {
-    pet: {
-      happiness: happiness
-    }
-  }
-  api.update(id, petData)
-    .then(ui.onUpdateSuccess)
+    .then(ui.onReleaseSuccess(name))
     .catch(ui.onError)
 }
 

@@ -36,51 +36,79 @@
       </form>
     </div>
   </section>
-  <!--   SIDEBAR    -->
+<!--   SIDEBAR    -->
   <section class="sidebar logged-in">
     <section class="account-options">
-    <!--   SIGN-OUT   -->
-    <form id="sign-out">
-      <h2>Sign Out</h2>
-      <input type="submit" value="Sign Out!">
-    </form>
-    <!--   FORM - CHANGE-PASSWORD   -->
-    <form id="change-password">
-        <h2>Change Password</h2>
-        <input name="passwords[old]"  type="password" placeholder="Enter old password" required>
-        <input name="passwords[new]" type="password" placeholder="Enter new password" required>
-        <input type="submit" value="Change Password!">
+<!--   SIGN-OUT   -->
+      <form id="sign-out">
+        <input type="submit" value="Sign Out!">
       </form>
-  </section>
+<!--   FORM - CHANGE-PASSWORD   -->
+      <form id="change-password">
+        <h2>Change Password</h2>
+        <input name="passwords[old]"  type="password" placeholder="Enter old password" required />
+        <input name="passwords[new]" type="password" placeholder="Enter new password" required />
+        <input type="submit" value="Change Password!" />
+      </form>
+    </section>
 
     <!-- INDEX -->
     <form id="pets-index">
-      <input value="List all pets!" type="submit">
+      <input value="View all pets!" type="submit" />
     </form>
 
     <!-- SHOW -->
     <form id="pets-show">
-      <input name="pet[id]" type="text" placeholder="Enter id" required>
-      <input value="Search for a pet by id!" type=submit>
+      <input name="pet[id]" type="search" placeholder="Enter id" required />
+      <input value="Search for a pet by id!" type="submit"/>
     </form>
 
     <!-- CREATE -->
     <form id="pets-create">
-      <input name="pet[name]" type="text" placeholder="Enter name" required>
-      <input name="pet[type]" type="text" placeholder="Enter type"required>
-      <input value="Adopt a new pet!" type=submit>
+      <fieldset id="type-select">
+        <div class="fieldset-container">
+        <!-- Replace text in label with img tag -->
+        <input id="cat-head" class="cat pet-type" name="pet[type]" type="radio" value="cat" />
+        <div class="pet-sprite"><label for="cat-head"><img src="./public/images/cat-idle.png" class="spritesheet idle-neutral" alt="cat-sprite"></label></div>
+        
+        <input id="dog-head" class="dog pet-type" name="pet[type]" type="radio" value="dog" />
+        <div class="pet-sprite"><label for="dog-head"><img src="./public/images/dog-idle.png" class="spritesheet idle-neutral" alt="dog-sprite"></label></div>
+        
+        <input id="bunny-head" class="bunny pet-type" name="pet[type]" type="radio" value="bunny" />
+        <div class="pet-sprite"><label for="bunny-head"><img src="./public/images/bunny-idle.png" class="spritesheet idle-neutral" alt="bunny-sprite"></label></div>
+        
+        <input id="mouse-head" class="mouse pet-type" name="pet[type]" type="radio" value="mouse" />
+        <div class="pet-sprite"><label for="mouse-head"><img src="./public/images/mouse-idle.png" class="spritesheet idle-neutral" alt="mouse-sprite"></label></div>
+        
+        <input id="chicken-head" class="chicken pet-type" name="pet[type]" type="radio" value="chicken" />
+        <div class="pet-sprite"><label for="chicken-head" ><img src="./public/images/chicken-idle.png" class="spritesheet idle-neutral" alt="chicken-sprite"></label></div>
+        
+        <input id="pig-head" class="pig pet-type" name="pet[type]" type="radio" value="pig" />
+        <div class="pet-sprite"><label for="pig-head"><img src="./public/images/pig-idle.png" class="spritesheet idle-neutral" alt="pig-sprite"></label></div>
+        
+        <input id="goat-head" class="goat pet-type" name="pet[type]" type="radio" value="goat" />
+        <div class="pet-sprite"><label for="goat-head"><img src="./public/images/goat-idle.png" class="spritesheet idle-neutral" alt="goat-sprite"></label></div>
+        
+        <input id="monkey-head" class="monkey pet-type" name="pet[type]" type="radio" value="monkey" />
+        <div class="pet-sprite"><label for="monkey-head"><img src="./public/images/monkey-idle.png" class="spritesheet idle-neutral" alt="monkey-sprite"></label></div>
+
+        <input id="moose-head" class="moose pet-type" name="pet[type]" type="radio" value="moose" />
+        <div class="pet-sprite"><label for="moose-head"><img src="./public/images/moose-idle.png" class="spritesheet idle-neutral" alt="moose-sprite"></label></div>
+      </div>
+      </fieldset>
+      
+      <input name="pet[name]" type="text" placeholder="Name your new pet!" required />
+      <input value="Adopt a new pet!" type="submit" />
     </form>
-
   </section>
 
-  <section id="messages">
-    <!-- MESSAGES TO USER -->
-    <div id="error-message"></div>
-    <div id="message"></div>
-  </section>
-  <!-- LIST O PETS -->
   <div id="pets-display" class="logged-in"></div>
 </main>
 
+<!-- MESSAGES TO USER -->
+<footer id="messages">
+  <div id="error-message"></div>
+  <div id="message"></div>
+</footer>
 </body>
 </html>
