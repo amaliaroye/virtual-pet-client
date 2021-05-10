@@ -6,43 +6,45 @@ Modifies index.html
 const store = require('./../store')
 
 const onSignUpSuccess = function () {
-  $('#message').text('Created new account successfully! Please sign-in!')
+  $('#alert-message').html('Created new account! Please sign-in!')
   $('form').trigger('reset')
 }
 
 const onSignUpError = function () {
-  $('#error-message').text('Whoops! Something went wrong. Please try again.')
+  $('#alert-message').html('Whoops! Something went wrong. Please try again.')
+  $('form').trigger('reset')
 }
 
 const onSignInSuccess = function (response) {
   store.user = response.user
-  $('#message').text('Signed in successfully. Welcome!')
+  $('#alert-message').html('Welcome!')
   $('form').trigger('reset')
   $('.logged-in').show()
   $('.logged-out').hide()
 }
 const onSignInError = function () {
-  $('#error-message').text('Whoops! Something went wrong. Sign in failed. Please try again.')
+  $('#alert-message').html('Whoops! Sign in failed. Please try again.')
+  $('form').trigger('reset')
 }
 
 const onChangePasswordSuccess = function () {
-  $('#message').text('Changed password successfully!')
+  $('#alert-message').html('Changed password successfully!')
   $('form').trigger('reset')
 }
 const onChangePasswordError = function () {
-  $('#error-message').text('Whoops! Something went wrong. Your password was not changed.')
+  $('#alert-message').html('Whoops! Something went wrong. Your password was not changed.')
   $('form').trigger('reset')
 }
 
 const onSignOutSuccess = function () {
-  $('#message').text('Signed out!')
+  $('#alert-message').html('Signed out! Come back soon!')
   $('.logged-out').show()
   $('.logged-in').hide()
   $('#pets-display').empty()
 }
 
 const onSignOutError = function () {
-  $('#error-message').text('Sign out failed. Please try again.')
+  $('#alert-message').html('Sign out failed. Please try again.')
 }
 
 module.exports = {

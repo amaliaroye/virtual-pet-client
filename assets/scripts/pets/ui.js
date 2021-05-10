@@ -4,8 +4,6 @@ Modifies index.html
 */
 'use strict'
 
-// const statusMessage = require('./messages')
-
 /*
  * -------- [ P E T   I N F O ] --------
  */
@@ -23,7 +21,6 @@ const petInfoHtml = function (pet) {
     mood = 'happy'
   }
 
-  // statusMessage(mood)
   return (`
     <div class="pet-info" id=${pet._id} data-id="${pet._id}">
       <div class="pet-sprite">
@@ -71,6 +68,7 @@ const onIndexSuccess = function (res) {
   pets.forEach((pet) => {
     $('#pets-display').prepend(petInfoHtml(pet))
   })
+  $('#alert-message').html('Showing all pets!')
 }
 
 /*
@@ -92,6 +90,7 @@ const onCreateSuccess = function (res) {
   // display new pet at the top of the list of pets
   $('#pets-display').slideDown().prepend(petInfoHtml(pet))
   $('form').trigger('reset')
+  $('#alert-message').html(`You adopted ${pet.name}!`)
 }
 
 /*
@@ -99,7 +98,7 @@ const onCreateSuccess = function (res) {
  * DELETE : /pets/:id
  */
 const onReleaseSuccess = function (name) {
-  $('#message').text(`Bye bye ${name}! Have fun at the farm!`)
+  $('#alert-message').text(`Bye bye ${name}! Have fun at the farm!`)
 }
 
 /*
@@ -110,14 +109,14 @@ const onUpdateSuccess = function (res) {
   const pet = res.pet
   // refresh pet display
   $(`#${pet._id}`).html(petInfoHtml(pet))
-  $('#message').text(`Name changed to ${pet.name}!`)
+  $('#alert-message').text(`Name changed to ${pet.name}!`)
 }
 
 /*
  * -------------------------------------------------- [ E R R O R ] --------
  */
 const onError = function () {
-  $('#error-message').text('Something went wrong, please try again.')
+  $('#alert-message').html('Something went wrong, please try again.')
   $('form').trigger('reset')
 }
 

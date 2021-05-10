@@ -22,7 +22,5 @@ $(() => {
   $('#pets-display').on('click', '.pets-release', petEvents.onReleasePet)
   $('#pets-display').on('submit', '.pets-update', petEvents.onUpdatePet)
 
-  $('#type-select input:radio').addClass('input_hidden')
-  $('#type-select label').on('click',
-    $(this).addClass('selected').siblings().removeClass('selected'))
+  $('.pet-sprite').on('click', $(this).addClass('selected'))
 })
