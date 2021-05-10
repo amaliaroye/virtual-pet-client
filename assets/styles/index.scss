@@ -1,0 +1,177 @@
+@font-face {
+  font-family: 'dogica';
+  src: url('public/dogicapixel.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'pixelpoiiz';
+  src: url('public/pixelpoiiz.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'code128';
+  src: url('public/code128.ttf') format('truetype');
+}
+
+* {
+  // Includes padding + border in an element's width and height (not margin)
+  box-sizing: border-box;
+  // CSS variable representing pixel art multiplier
+  --pixel-size: 4;
+  image-rendering: pixelated;
+  font-family: dogica, sans-serif;
+  font-size: 1em;
+}
+
+body {
+}
+
+h1 { // main title 'pixel pets'
+  font-family: pixelpoiiz, sans-serif;
+  font-size: 4em;
+  text-align: center;
+  margin: 2vw;
+}
+
+h2 {
+  font-family: pixelpoiiz;
+  font-size: 2.5em;
+  margin: 1vw;
+}
+
+header {
+  margin: 1vw;
+}
+
+footer {
+  position: fixed;
+  margin: 1vw;
+}
+
+.welcome { // wrapper for welcome page contents (h1 + form-container)
+  display: flex;
+  flex-direction: column; // vertical main-axis
+  align-items: center; // centers on the horizontal cross-axis
+}
+
+.form-container { // wrapper for grouping forms (sign-up + sign-in)
+  display: flex;
+  flex-direction: row; // horizontal main-axis
+}
+
+@media (max-width: 725px) {
+  .form-container,.welcome {
+    flex-flow: column wrap; // vertical main-axis
+    align-items: stretch; // stretches width to 100% on horizontal cross-axis
+  }
+}
+
+form {
+  padding: 1vw;
+  margin: 1vw;
+  display: flex;
+  flex-direction: column; // vertical main-axis
+  align-items: center; // centers items on horizontal cross-axis
+  border-width: calc(4px * var(--pixel-size));
+  border-style: solid;
+  border-image-source: url('public/images/border4.png');
+  border-image-repeat: repeat;
+  // width of border offset from source image in pixels (or %)
+  border-image-slice: 4 fill;
+  }
+
+input {
+  border-width: calc(4px * var(--pixel-size));
+  border-style: solid;
+  border-image-source: url('public/images/border4.png');
+  border-image-repeat: repeat;
+  // width of border offset from source image in pixels (or %)
+  border-image-slice: 4 fill;
+  display: inline-block;
+  background-color: transparent;
+  margin: 1vw;
+  &:hover {
+    color: lightpink;
+  }
+  &:focus {
+    color: deeppink;
+  }
+  &[type="submit"] {
+    align-self: flex-end; // aligns buttons to right
+  }
+  &[type="radio"] {
+    display: none;
+  }
+}
+.fieldset-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.selected {
+  background-color: yellow;
+}
+
+.pet-options {
+  display: inline;
+}
+
+.barcode {
+  font-family: code128;
+}
+
+.statbar {
+  width: 100%;
+  background-color: gray;
+  border: 2px solid black;
+}
+
+.statbar-fill {
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: red;
+  color: white;
+}
+
+.pet-sprite { // wrapper container for sprite
+  width: calc(32px * var(--pixel-size));
+  height: calc(32px * var(--pixel-size));
+  overflow: hidden;
+  position: relative; // shadows should be absolute
+  margin: auto;
+}
+
+.spritesheet { //
+  animation-name: moveSpritesheet;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(2); // frames per loop
+  animation-play-state: paused;
+  width: calc(64px * var(--pixel-size));
+  position: absolute;
+  &:hover {
+    animation-play-state: running;
+  }
+}
+
+.idle-neutral {
+  top: calc(0px * var(--pixel-size));
+}
+.idle-happy, .idle-content {
+  top: calc(-32px * var(--pixel-size));
+}
+.idle-tense {
+  top: calc(-64px * var(--pixel-size));
+}
+.idle-sad {
+  top: calc(-96px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheet {
+  // moves spritesheet relative to itself
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
