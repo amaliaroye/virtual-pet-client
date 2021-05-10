@@ -12,7 +12,8 @@ This is an application that allows users to create and play with virtual pets. T
 - HTML
 - CSS
 - jQuery
--
+
+
 ## User Stories
 - As a new user, I want to be able to create a new account with my email and a password.
 - As a returning user, I want to be able to sign into my account using my email and password
@@ -25,3 +26,4 @@ This is an application that allows users to create and play with virtual pets. T
 - As a logged-in user, I want to be able to release my pet and delete them
 
 ## Wireframes
+![Wireframes](./public/wireframes.jpg)
